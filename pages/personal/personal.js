@@ -44,12 +44,39 @@ Page({
     }
   },
   getUserInfo: function(e) {
+    var that = this;
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+    if (e.detail.userInfo){
+      that.setData({
+        userInfo: e.detail.userInfo,
+        hasUserInfo: true
+      })
+      console.log(e.detail.userInfo);
+      wx.login({
+        success: res => {
+          //发起网络请求
+          wx.request({
+            url: 'https://www.zhuyao.xin/onLoginAll',
+            data: {
+              code: res.code,
+              express: 'garden',
+              name: 'LoginUrl',
+              userInfo: app.globalData.userInfo
+            },
+            success: function (res) {
+              //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
+              console.log(res.data);
+              app.globalData.openId = res.data.data
+            },
+            fail: function (res) {
+              console.log("--------fail--------");
+            }
+          })
+        }
+      })
+    }
+     
   },
 
   /**

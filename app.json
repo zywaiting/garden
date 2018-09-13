@@ -6,9 +6,9 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "小朱果园",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"white"
   },
   "tabBar": {
     "selectedColor": "#FF3300",
