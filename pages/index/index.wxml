@@ -1,2 +1,6 @@
 <!--index.wxml-->
-<text>pages/personal/personal.wxml</text>
+<view class="page-body">
+  <view class="page-section page-section-gap">
+    <web-view src="https://zhuyao.xin/index"></web-view>
+  </view>
+</view>

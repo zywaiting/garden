@@ -183,3 +183,5 @@
     </view>
     <!-- <button class="w-button ">退出</button> -->
 </view>
+
+<view>{{test}}</view>

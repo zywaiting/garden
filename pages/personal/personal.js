@@ -9,13 +9,25 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    test:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    if (options.q !== undefined) {
+      var scan_url = decodeURIComponent(options.q);
+      this.setData({
+        test: scan_url
+      })
+      console.log(scan_url);
+    } else {
+      console.log(123);
+    }
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
