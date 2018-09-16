@@ -2,7 +2,13 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/personal/personal"
+    "pages/personal/personal",
+    "pages/info/addressList/addressList",
+    "pages/info/helpList/helpList",
+    "pages/info/account/account",
+    "pages/info/productStore/productStore",
+    "pages/info/productCommentList/productCommentList",
+    "pages/info/orderList/orderList"
   ],
   "window":{
     "backgroundTextStyle":"light",
