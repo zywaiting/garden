@@ -1,68 +1,32 @@
-<!--pages/personal/personal.wxml-->
-  <!-- <view class='item-content'>
-    <view class='item-main'>
-      <view>
-
-        <view>
-          <block wx:if="{{hasUserInfo || !canIUse}}">
-            <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-          </block>
-        </view>
-      </view>
-    </view>
-  </view>  
-
-
-<view >
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-</view> -->
-
-
-
 <!--pages/center/center.wxml-->
 <view class="m-ucenter g-row greybg">
 
-    <view class="m-uc-top">
-        <view class="m-profile">
-          <view  wx:if="{{!hasUserInfo && canIUse}}">
-            <button class="avatar" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 
-            <image  src="https://img02.camel.com.cn/image/headportrait345.png" alt=""></image>
-             </button>
-          </view>
-            
-          <block wx:else>
-            <image class="avatar" src="{{userInfo.avatarUrl}}" alt=""></image>
-          </block>
-          <view class="info">
-              <view wx:if="{{!hasUserInfo && canIUse}}" class="nickname">
-                点击头像登陆
-              </view>
-              <view wx:else class="nickname">
-                {{userInfo.nickName}}
-              </view>
-              <view class="membershipLevel">
-                  <text class="memberTitle1">果客</text>
-              </view>
-              <view class="icon ion-ios-arrow-right top_right"></view>
-          </view>
-            
+  <view class="m-uc-top">
+      <view class="m-profile">
+        <view  wx:if="{{!hasUserInfo && canIUse}}">
+          <button class="avatar" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 
+          <image  src="https://img02.camel.com.cn/image/headportrait345.png" alt=""></image>
+            </button>
         </view>
-    </view>
-
-
-
-
-
-
+          
+        <block wx:else>
+          <image class="avatar" src="{{userInfo.avatarUrl}}" alt=""></image>
+        </block>
+        <view class="info">
+            <view wx:if="{{!hasUserInfo && canIUse}}" class="nickname">
+              点击头像登陆
+            </view>
+            <view wx:else class="nickname">
+              {{userInfo.nickName}}
+            </view>
+            <view class="membershipLevel">
+                <text class="memberTitle1">果客</text>
+            </view>
+            <view class="icon ion-ios-arrow-right top_right"></view>
+        </view>
+          
+      </view>
+  </view>
 
 
 
@@ -176,7 +140,6 @@
             </view>
         </view>
     </view>
-    <!-- <button class="w-button ">退出</button> -->
 </view>
 
 <view>{{test}}</view>

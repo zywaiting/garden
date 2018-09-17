@@ -2,7 +2,6 @@
 
 @import "lib/ionicons.wxss";
 
-/* reset css*/
 blockquote, body, button, caption, dd, div, dl, dt, fieldset, figure, form, h1,
 h2, h3, h4, h5, h6, hr, html, input, legend, li, menu, ol, p, pre, table, td,
 textarea, th, ul {
@@ -1307,7 +1306,7 @@ m-indexHd .inner {
     color: #f48f18;
 }
 
-/* .w-button {
+.w-button {
     height: 75rpx;
     line-height: 75rpx;
     text-align: center;
@@ -1318,7 +1317,7 @@ m-indexHd .inner {
     background-color: #fff;
     font-size: 24rpx;
     margin-top: 22rpx;
-} */
+}
 
 .detail-swiper-con img {
     width: 100%;

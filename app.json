@@ -8,7 +8,8 @@
     "pages/info/account/account",
     "pages/info/productStore/productStore",
     "pages/info/productCommentList/productCommentList",
-    "pages/info/orderList/orderList"
+    "pages/info/orderList/orderList",
+    "pages/attach/love/love"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -23,6 +24,12 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_on.png"
+      },
+      {
+        "pagePath": "pages/attach/love/love",
+        "text": "娱乐",
         "iconPath": "images/home.png",
         "selectedIconPath": "images/home_on.png"
       },
