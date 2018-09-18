@@ -35,6 +35,9 @@ App({
   },
   globalData: {
     userInfo: null,
-    opneid:''
+    opneid:'',
+    nopay: [],
+    noship: [],
+    ship: []
   }
 })

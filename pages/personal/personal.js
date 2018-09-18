@@ -10,7 +10,10 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    test:''
+    test:'',
+    nopaySize:'',
+    noshipSize:'',
+    shipSize:''
   },
 
   /**
@@ -54,6 +57,33 @@ Page({
         }
       })
     }
+
+
+    var that = this;
+    console.log(options);
+    wx.request({
+      url: 'https://www.zhuyao.xin/shop/order',
+      data: {
+        openid: app.globalData.openid,
+      },
+      success: function (res) {
+        //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
+        console.log(res.data.data.ship);
+        console.log(res.data.data.noship.length);
+        console.log(res.data.data.ship.length);
+        app.globalData.nopay = res.data.data.nopay
+        app.globalData.noship = res.data.data.noship
+        app.globalData.ship = res.data.data.ship
+        that.setData({
+          nopaySize: res.data.data.nopay.length,
+          noshipSize: res.data.data.noship.length,
+          shipSize: res.data.data.ship.length
+        })
+      },
+      fail: function (res) {
+        console.log("--------fail--------");
+      }
+    })
   },
   getUserInfo: function(e) {
     var that = this;
