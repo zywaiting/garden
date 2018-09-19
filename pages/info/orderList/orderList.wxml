@@ -1,90 +1,74 @@
 <!--pages/info/orderList/orderList.wxml-->
-<view class="container greybg">
+<view class="container greybg" wx:if="{{dataStr}}">
+  <block wx:for="{{returnList}}">
     <view class="m-orderList">
         <view class="order-item">
             <view class="hd">
-                <text class="orderId">订单编号：201710091414371189</text>
+                <text class="orderId">订单编号：{{item.orderNumber}}</text>
                 <text class="od-cancel">取消</text>
             </view>
-            <navigator url="../orderDetail/orderDetail">
-                <view class="bd">
-                    <view class="left">
-                        <view class="count">
-                            <text class="txt">共1种</text>
-                        </view>
-                        <image src="https://img01.camel.com.cn/product/image/D6Y105770/0f9dd4ee-3c89-4d11-ac6c-2f82b5455ca0.jpg!prodimg100" alt="" class="pic"></image>
-                    </view>
-                    <view class="middle">
-                        <view class="goodInfo">
-                            <view>
-                                <text class="p1">骆驼秋冬新款男士轻薄羽绒服 可脱卸帽</text>
-                            </view>
-                            <view>
-                                <text class="p2">咖啡*M(170/88A)</text>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="right">
-                        <view>
-                            <text class="p3">x1</text>
-                        </view>
-                        <view>
-                            <text class="p4">未付款</text>
-                        </view>
-                    </view>
-                </view>
-            </navigator>
-            <view class="ft">
-                <view class="btns">
-                    <navigator url="../apply/apply">
-                        <text class="w-button">售后申请</text>
-                    </navigator>
-                </view>
-            </view>
-        </view>
-    </view>
+            <block wx:for="{{item.orderGoodsList}}">
+              <navigator url="../orderDetail/orderDetail">
+                  <view class="bd">
+                      <view class="left">
+                          <view class="count">
+                              <text class="txt">共1种</text>
+                          </view>
+                          <image src="{{item.goods.img}}" alt="" class="pic"></image>
+                      </view>
+                      <view class="middle">
+                          <view class="goodInfo">
+                              <view>
+                                  <text class="p1">{{item.goods.name}}</text>
+                              </view>
+                              <view>
+                                  <text class="p2">{{item.goods.unit}}</text>
+                              </view>
+                          </view>
+                      </view>
+                      <view class="right">
+                          <view>
+                              <text class="p3">{{item.goodsNum}}</text>
+                          </view>
+                          <!-- 已支付 -->
+                          <view wx:if="{{pay}}">
+                              <text class="p4">已支付</text>
+                          </view>
+                          <!-- 未支付 -->
+                          <view wx:else>
+                              <text class="p4">未付款</text>
+                          </view>
+                      </view>
+                  </view>
+              </navigator>
+            </block>
 
-    <view class="m-orderList">
-        <view class="order-item">
-            <view class="hd">
-                <text class="orderId">订单编号：201710091414371189</text>
-                <text class="od-cancel">取消</text>
-            </view>
-            <navigator url="../orderDetail/orderDetail">
-                <view class="bd">
-                    <view class="left">
-                        <view class="count">
-                            <text class="txt">共1种</text>
-                        </view>
-                        <image src="https://img01.camel.com.cn/product/image/D6Y105770/0f9dd4ee-3c89-4d11-ac6c-2f82b5455ca0.jpg!prodimg100" alt="" class="pic"></image>
-                    </view>
-                    <view class="middle">
-                        <view class="goodInfo">
-                            <view>
-                                <text class="p1">骆驼秋冬新款男士轻薄羽绒服 可脱卸帽</text>
-                            </view>
-                            <view>
-                                <text class="p2">咖啡*M(170/88A)</text>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="right">
-                        <view>
-                            <text class="p3">x1</text>
-                        </view>
-                        <view>
-                            <text class="p4">未付款</text>
-                        </view>
-                    </view>
-                </view>
-            </navigator>
             <view class="ft">
-                <view class="btns">
-                    <navigator url="../orderTrace/orderTrace"><text class="w-button">追踪物流</text></navigator>
-                    <navigator url="../productComment/productComment"><text class="w-button">评价</text></navigator>
+                <view class="btns" wx:if="{{!pay}}">
                     <text class="w-button btn-topay">去付款</text>
                 </view>
+
+                <view class="btns" class="btns" wx:if="{{pay&&!ship}}">
+                    <navigator url="../apply/apply">
+                      <text class="w-button">售后申请</text>
+                    </navigator>
+                </view>
+
+                <view class="btns" wx:if="{{ship}}">
+                    <navigator url="../orderTrace/orderTrace">
+                      <text class="w-button">追踪物流</text>
+                    </navigator>
+                    <navigator url="../apply/apply">
+                      <text class="w-button">售后申请</text>
+                    </navigator>
+                    <!-- <navigator url="../productComment/productComment"><text class="w-button">评价</text></navigator> -->
+                </view>
             </view>
         </view>
     </view>
+  </block>
+</view>
+
+<view wx:else>
+  <text>没有记录！</text>
 </view>

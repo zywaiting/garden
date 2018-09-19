@@ -47,21 +47,21 @@
         <view class="m-uc-menu">
             <view class="list">
                 <view class="item">
-                    <navigator url="../info/orderList/orderList?isPay=0&isShip=0">
+                    <navigator url="../info/orderList/orderList?status=0">
                         <image class="menu-icon" src="http://img02.camel.com.cn/image/zwuc_icon1.png" alt=""></image>
                         <text class="txt">待付款</text>
                         <text class="red-dot">{{nopaySize}}</text>
                     </navigator>
                 </view>
                 <view class="item">
-                    <navigator url="../info/orderList/orderList?isPay=1&isShip=0">
+                    <navigator url="../info/orderList/orderList?status=1">
                         <image class="menu-icon" src="http://img02.camel.com.cn/image/zwuc_icon2.png" alt=""></image>
                         <text class="txt">待发货</text>
                         <text class="red-dot">{{noshipSize}}</text>
                     </navigator>
                 </view>
                 <view class="item">
-                    <navigator url="../info/orderList/orderList?isPay=1&isShip=1">
+                    <navigator url="../info/orderList/orderList?status=-1">
                         <image class="menu-icon" src="http://img02.camel.com.cn/image/zwuc_icon3.png" alt=""></image>
                         <text class="txt">已发货</text>
                         <text class="red-dot">{{shipSize}}</text>
@@ -90,7 +90,7 @@
         <view class="m-uc-menu">
             <view class="list">
                 <view class="item">
-                    <navigator url="../member/ticketList/ticketList">
+                    <navigator url="../info/orderTicketList/orderTicketList">
                         <image class="menu-icon" src="http://img02.camel.com.cn/image/zwuc_icon6.png" alt=""></image>
                         <text class="txt">优惠券</text>
                     </navigator>

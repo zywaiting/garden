@@ -1,39 +1,18 @@
-// pages/info/addressList/addressList.js
-//获取应用实例
-const app = getApp()
+// pages/info/orderTicketList/orderTicketList.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userAddressesIsDefault:[],
-    userAddressesNoDefault:[]
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    console.log(options);
-    wx.request({
-      url: 'https://www.zhuyao.xin/address',
-      data: {
-        openid: app.globalData.openid,
-      },
-      success: function (res) {
-        //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
-        that.setData({
-          userAddressesIsDefault: res.data.data.userAddressesIsDefault,
-          userAddressesNoDefault: res.data.data.userAddressesNoDefault,
-        })
-        console.log(res.data);
-      },
-      fail: function (res) {
-        console.log("--------fail--------");
-      }
-    })
+
   },
 
   /**

@@ -4,11 +4,13 @@
     "pages/logs/logs",
     "pages/personal/personal",
     "pages/info/addressList/addressList",
+    "pages/info/addAddress/addAddress",
     "pages/info/helpList/helpList",
     "pages/info/account/account",
     "pages/info/productStore/productStore",
     "pages/info/productCommentList/productCommentList",
     "pages/info/orderList/orderList",
+    "pages/info/orderTicketList/orderTicketList",
     "pages/attach/love/love"
   ],
   "window":{

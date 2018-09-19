@@ -7,14 +7,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    returnList:[],
+    pay: false,
+    ship:false,
+    dataStr:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var that = this;
+    if (options.status == 0){
+      that.setData({
+        returnList: app.globalData.nopay,
+      })
+    }
+    if (options.status == 1){
+      that.setData({
+        returnList: app.globalData.noship,
+        pay: true
+      })
+    }
+    if (options.status == -1) {
+      that.setData({
+        returnList: app.globalData.ship,
+        pay: true,
+        ship:true
+      })
+    }
+    if (that.data.returnList.length > 0) {
+      that.setData({
+        dataStr: true
+      })
+    }
   },
 
   /**

@@ -68,9 +68,6 @@ Page({
       },
       success: function (res) {
         //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
-        console.log(res.data.data.ship);
-        console.log(res.data.data.noship.length);
-        console.log(res.data.data.ship.length);
         app.globalData.nopay = res.data.data.nopay
         app.globalData.noship = res.data.data.noship
         app.globalData.ship = res.data.data.ship
