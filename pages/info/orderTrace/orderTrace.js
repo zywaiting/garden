@@ -1,4 +1,4 @@
-// pages/info/addAddress/addAddress.js
+// pages/info/orderTrace/orderTrace.js
 //获取应用实例
 const app = getApp()
 Page({
@@ -7,14 +7,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    historyList:[],
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    console.log(options);
+    wx.request({
+      url: 'https://www.zhuyao.xin/expressinquiry',
+      data: {
+        openid: app.globalData.openid,
+        shipNmber: options.shipNmber,
+        orderNumber: options.orderNumber,
+        shipName: options.shipName
+      },
+      success: function (res) {
+        //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
+        console.log(res.data.data);
+        if(res.data.data.code == "OK"){
+          that.setData({
+            historyList: res.data.data.list
+          })
+        }
+        console.log(that.data.historyList);
+      },
+      fail: function (res) {
+        console.log("--------fail--------");
+      }
+    })
   },
 
   /**
@@ -64,33 +88,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  saveAdress: function(e){
-    console.log(e.detail.value);
-    if (e.detail.value.phone.length != 11){
-      
-    } else if (e.detail.value.username.length == 0) {
-
-    } else if(e.detail.value.address.length == 0) {
-
-    } else{
-      wx.request({
-        url: 'https://www.zhuyao.xin/addAddress',
-        data: {
-          phone: e.detail.value.phone,
-          username: e.detail.value.username,
-          address: e.detail.value.address,
-          openid: app.globalData.openid
-        },
-        success: function (res) {
-          //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
-          console.log(res.data);
-        },
-        fail: function (res) {
-          console.log("--------fail--------");
-        }
-      })
-    }
-    
   }
 })

@@ -11,6 +11,7 @@
     "pages/info/productCommentList/productCommentList",
     "pages/info/orderList/orderList",
     "pages/info/orderTicketList/orderTicketList",
+    "pages/info/orderTrace/orderTrace",
     "pages/attach/love/love"
   ],
   "window":{

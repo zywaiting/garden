@@ -55,7 +55,7 @@
                 </view>
 
                 <view class="btns" wx:if="{{ship}}">
-                    <navigator url="../orderTrace/orderTrace">
+                    <navigator url="../orderTrace/orderTrace?orderNumber={{item.orderNumber}}&shipNmber={{item.shipNmber}}&shipName={{item.shipName}}">
                       <text class="w-button">追踪物流</text>
                     </navigator>
                     <navigator url="../apply/apply">

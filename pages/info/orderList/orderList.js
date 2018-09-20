@@ -41,6 +41,7 @@ Page({
         dataStr: true
       })
     }
+    console.log(that.data.returnList);
   },
 
   /**

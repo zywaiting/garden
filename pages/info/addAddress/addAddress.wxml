@@ -1,10 +1,11 @@
 <!--pages/info/addAddress/addAddress.wxml-->
 <view class="greybgh100">
     <view class="m-address-form ">
+    <form bindsubmit='saveAdress'>
         <view class="section">
             <view class="inputwrap ">
                 <view class="inputBox ">
-                    <input class="j-inputtext lophone" placeholder="姓名" maxlength="100" value="" />
+                    <input class="j-inputtext lophone" placeholder="姓名" maxlength="100" value="" name='username'/>
                     <view class="utip">
                         <i class="icon u-clear ion-ios-close"></i>
                     </view>
@@ -12,7 +13,7 @@
             </view>
             <view class="inputwrap ">
                 <view class="inputBox ">
-                    <input type="number" class="j-inputtext lophone" placeholder="手机号码" maxlength="11" value="" />
+                    <input type="number" class="j-inputtext lophone" placeholder="手机号码" maxlength="11" value="" name='phone'/>
                     <view class="utip">
                         <i class="icon u-clear ion-ios-close"></i>
                     </view>
@@ -20,7 +21,7 @@
             </view>
             <view class="inputwrap ">
                 <view class="inputBox ">
-                    <input class="j-inputtext lophone" placeholder="详细地址" maxlength="100" value="" />
+                    <input class="j-inputtext lophone" placeholder="详细地址" maxlength="100" value="" name='address'/>
                     <view class="utip">
                         <i class="icon u-clear ion-ios-close"></i>
                     </view>
@@ -33,9 +34,10 @@
         </view> -->
         <navigator url="../addressList/addressList" redirect="true">
           <view class="orderRFT">
-              <view class="left">取消</view>
-              <view class="right">保存</view>
+              <button class="left">取消</button>
+              <button class="right" form-type='submit'>保存</button>
           </view>
         </navigator>
+        </form>
     </view>
 </view>
