@@ -1,6 +1,6 @@
 <!--pages/attach/love/love.wxml-->
 <view class="page-body">
   <view class="page-section page-section-gap">
-    <web-view src="https://zhuyao.xin/index"></web-view>
+    <web-view src="{{url}}"></web-view>
   </view>
 </view>

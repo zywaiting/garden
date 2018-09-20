@@ -8,7 +8,9 @@ Page({
    */
   data: {
     historyList:[],
-    
+    name:'',
+    no:'',
+    view:false
   },
 
   /**
@@ -30,7 +32,10 @@ Page({
         console.log(res.data.data);
         if(res.data.data.code == "OK"){
           that.setData({
-            historyList: res.data.data.list
+            historyList: res.data.data.list,
+            name: res.data.data.name,
+            no: res.data.data.no,
+            view: true
           })
         }
         console.log(that.data.historyList);
