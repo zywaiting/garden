@@ -19,10 +19,7 @@
                       <view class="addr">
                           {{item.address}}
                       </view>
-                  </view>
-                  <view class="right">
-                      <i class="icon icon-right ion-ios-arrow-right"></i>
-                  </view>
+                  </view>   
               </view>
             </block>
             <block wx:for="{{userAddressesNoDefault}}">
@@ -39,9 +36,6 @@
                       <view class="addr">
                           {{item.address}}
                       </view>
-                  </view>
-                  <view class="right">
-                      <i class="icon icon-right ion-ios-arrow-right"></i>
                   </view>
               </view>
             </block>

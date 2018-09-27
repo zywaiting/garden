@@ -17,49 +17,50 @@
     <view class="cart-wrap">
         <view class="m-cartGroup">
             <view class="list">
-                <view class="item">
-                    <view class="inner">
-                        <view class="m-good">
-                            <i class="icon icon-ischecked-g ion-checkmark-circled"></i>
-                            <view class="imgWrap">
-                                <image src="http://wq-zy.oss-cn-hangzhou.aliyuncs.com/shop/peach/product.jpg" alt="" mode="widthFix"></image>
-                            </view>
-                            <view class="cnt">
-                                <view class="line1">黄桃罐头</view>
-                                <view class="line2">6瓶装</view>
-                                <view class="line3">￥90.00</view>
-                            </view>
-                            <view class="m-selnum">
-                                <view class="less dis">
-                                    <i class="icon ion-ios-minus-empty"></i>
-                                </view>
-                                <view class="textWrap">
-                                    <input class="txt" value="1" />
-                                </view>
-                                <view class="plus">
-                                    <i class="icon ion-ios-plus-empty"></i>
-                                </view>
-                            </view>
-                        </view>
-                        <view class="del">
-                            <i class="icon icon-trash ion-ios-trash-outline"></i>
-                        </view>
-                    </view>
-                </view>
+
+
+                <block wx:for="{{goodsList}}">
+                  <view class="item">
+                      <view class="inner">
+                          <view class="m-good">
+                              <view class="imgWrap">
+                                  <image src="{{item.img}}" alt="" mode="widthFix"></image>
+                              </view>
+                              <view class="cnt">
+                                  <view class="line1">{{item.name}}</view>
+                                  <view class="line2">{{item.unit}}</view>
+                                  <view class="line3">￥{{item.shopPrice}}.00</view>
+                              </view>
+                              <view class="m-selnum">
+                                  <view class="less" bindtap="bindMinus" data-goodsid="{{item.id}}" data-goodsnum="{{item.num}}">
+                                      <text class='zytext'>-</text>
+                                  </view>
+                                  <view class="textWrap">
+                                    <input  class="txt" disabled="false" type="number" bindinput="bindManual"  value="{{item.num}}"/>
+                                  </view>
+                                  <view class="plus" bindtap="bindPlus" data-goodsid="{{item.id}}" data-goodsnum="{{item.num}}">
+                                      <text class='zytext'>+</text>
+                                  </view>
+                              </view>
+                          </view>
+                      </view>
+                  </view>
+                </block>
+
+
             </view>
         </view>
         <view class="m-cartFT">
             <view class="left">
                 <view class="checkAll">
-                    <i class="icon icon-ischecked-g ion-checkmark-circled"></i>
-                    <text class="txt">已选 (1)</text>
+                    <text class="txt">已选 ({{goodsNumber}})</text>
                 </view>
-                <view class="price">￥60.00
+                <view class="price">￥{{sumPrice}}.00
                     <text class="prefer">（优惠:0）</text>
                 </view>
             </view>
             <view class="right">
-                <navigator url="../order/orderConfirm/orderConfirm" hover-class="navigator-hover"><view class="btn w-button">下单</view></navigator>
+                <navigator url="../info/orderConfirm/orderConfirm" hover-class="navigator-hover"><view class="btn w-button">下单</view></navigator>
             </view>
         </view>
     </view>

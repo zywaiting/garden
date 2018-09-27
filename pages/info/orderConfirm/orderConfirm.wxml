@@ -1,0 +1,162 @@
+<!--pages/info/orderConfirm/orderConfirm.wxml-->
+<view class="container greybg">
+
+    <view class="m-indexHd" style="height: 44px;">
+        <view class="m-hd">
+            <view class="">
+                <view class="product-hd g-row">
+                    <view class="g-top g-row">
+                        <text class="topBarTitle">订单确认</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="m-shipAddress ma-layort">
+        <view class="u-icon u-address-bg">
+        </view>
+        <view class="item">
+            <view class="item">
+                  <view class="left">
+                      <view class="uname">
+                          朱瑶
+                      </view>
+                  </view>
+                  <view class="middle">
+                      <view class="phone">
+                          17605674666
+                      </view>
+                      <view class="addr">
+                          安徽
+                      </view>
+                  </view>   
+              </view>
+            <!-- <view class="middle">
+                <view class="addr">
+                     选择收货地址
+                </view>
+            </view> -->
+        </view>
+    </view>
+
+    <view class="Payway ma-layort">
+        <view class="hd">
+            支付方式
+        </view>
+        <view class="ma-list">
+            <!-- <view class="item">
+                <i class="icon icon-ischecked-g ion-checkmark-circled"></i>
+                <view class="paywayItem">
+                    <image class="pic" src="https://img02.camel.com.cn/image/zfb_icon.png" alt=""></image>
+                    <text class="txt">支付宝</text>
+                </view>
+            </view> -->
+            <view class="item">
+                <!-- <i class="icon icon-nochecked-g ion-ios-circle-outline"></i> -->
+                <view class="paywayItem">
+                    <image class="pic" src="https://img02.camel.com.cn/image/wx_icon.png" alt=""></image>
+                    <text class="txt">微信</text>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="Payway EXPway ma-layort">
+        <view class="hd">配送方式</view>
+        <view class="ma-list">
+            <view class="item">
+                <!-- <i class="icon icon-ischecked-g ion-checkmark-circled"></i> -->
+                <text class="txt">普通快递</text>
+            </view>
+            <!-- <view class="item">
+                <i class="icon icon-nochecked-g ion-ios-circle-outline"></i>
+                <text class="txt">顺丰特惠</text>
+            </view>
+            <view class="item">
+                <i class="icon icon-nochecked-g ion-ios-circle-outline"></i>
+                <text class="txt">EMS快递</text>
+            </view> -->
+        </view>
+    </view>
+
+    <!-- <view class="campaigns">
+        <view class="left">
+            <view class="item">
+                <text class="txt">暂无优惠活动</text>
+            </view>
+        </view>
+        <view class="right"></view>
+    </view> -->
+
+    <view class="ma-plist ma-layort">
+        <view class="hd">我的商品</view>
+        <view class="m-cartGroup">
+          <block wx:for="{{goodsList}}">
+            <ul class="list">
+                <li class="item">
+                    <view class="inner">
+                        <view class="m-good">
+                            <view class="imgWrap">
+                                <image src="{{item.img}}" alt=""></image>
+                            </view>
+                            <view class="cnt">
+                                <view class="xbox">
+                                    <text class="line1">{{item.name}}</text>
+                                    <text class="count">{{item.num}}</text>
+                                </view>
+                                <text class="line2">{{item.unit}}</text>
+                                <text class="line3">￥{{item.shopPrice}}.00</text>
+                            </view>
+                        </view>
+                    </view>
+                </li>
+            </ul>
+          </block>
+        </view>
+    </view>
+
+    <!-- <view class="ma-layort">
+        <view class="m-listItem">
+            <view class="left">你拥有优惠券</view>
+            <view class="middel">3张
+            </view>
+            <view class="right">
+                <i class="icon icon-right ion-ios-arrow-right"></i>
+            </view>
+        </view>
+    </view> -->
+
+    <view class="ma-layort">
+        <ul class="m-list m-summary">
+            <li class="item">
+                <view class="left">商品合计</view>
+                <view class="right">￥{{sumPrice}}.00</view>
+            </li>
+            <!-- <li class="item">
+                <view class="left">优惠金额</view>
+                <view class="right">￥0.00 </view>
+            </li>
+            <li class="item">
+                <view class="left">运费</view>
+                <view class="right">￥0.00 </view>
+            </li>
+            <li class="item">
+                <view class="left">购物积分</view>
+                <view class="right">258</view>
+            </li> -->
+        </ul>
+    </view>
+
+    <view class="ocViewFt">
+        <view class="empty-block"></view>
+        <view class="main">
+            <view class="left">
+                <text class="actualPrice">应付:￥{{sumPrice}}.00 </text>
+            </view>
+            <view class="right">
+                <view class="btn w-button">去付款</view>
+            </view>
+        </view>
+    </view>
+</view>

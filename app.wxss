@@ -2211,7 +2211,7 @@ m-indexHd .inner {
 .m-cartGroup {
     background-color: #fff;
     margin-bottom: 22rpx;
-    padding-left: 115rpx;
+    padding-left: 80rpx;
     overflow: hidden;
     margin-top:20rpx;
 }
@@ -2246,7 +2246,7 @@ m-indexHd .inner {
 }
 
 .m-cartGroup .imgWrap image {
-    width: 160rpx;
+    width: 200rpx;
     height: 160rpx;
     display: block;
 }
@@ -2293,7 +2293,7 @@ m-indexHd .inner {
 
 .m-cartGroup .m-selnum .less, .m-cartGroup .m-selnum .plus {
     width: 49rpx;
-    height: 51rpx;
+    height: 50rpx;
 }
 
 .m-cartGroup .m-selnum .textWrap .txt {

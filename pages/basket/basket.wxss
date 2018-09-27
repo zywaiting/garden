@@ -1,1 +1,4 @@
 /* pages/basket/basket.wxss */
+.zytext{
+  font-size: 40rpx;
+}

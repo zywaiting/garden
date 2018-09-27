@@ -1,11 +1,15 @@
 // pages/basket/basket.js
+//获取应用实例
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    goodsList:[],
+    goodsNumber:'',
+    sumPrice:''
   },
 
   /**
@@ -26,7 +30,26 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    wx.request({
+      url: 'https://www.zhuyao.xin/shop/shopcar',
+      data: {
+        openid: app.globalData.openid,
+      },
+      success: function (res) {
+        //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
+        console.log(res.data);
+        that.setData({
+          goodsList: res.data.data.goodsList,
+          goodsNumber: res.data.data.goodsNumber,
+          sumPrice: res.data.data.sumPrice
+        })
+        console.log(res.data.data);
+      },
+      fail: function (res) {
+        console.log("--------fail--------");
+      }
+    })
   },
 
   /**
@@ -62,5 +85,60 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  /* 点击减号 */
+	bindMinus: function (e) {
+    var that = this;
+    console.log(e.currentTarget.dataset);
+    if (e.currentTarget.dataset.goodsnum > 1){
+      console.log(e.currentTarget.dataset);
+      wx.request({
+        url: 'https://www.zhuyao.xin/shop/shopcarAddOrDel',
+        data: {
+          openid: app.globalData.openid,
+          goodsId: e.currentTarget.dataset.goodsid,
+          goodsNum: e.currentTarget.dataset.goodsnum - 1
+        },
+        success: function (res) {
+          //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
+          console.log(res.data);
+          that.setData({
+            goodsList: res.data.data.goodsList,
+            goodsNumber: res.data.data.goodsNumber,
+            sumPrice: res.data.data.sumPrice
+          })
+          console.log(res.data.data);
+        },
+        fail: function (res) {
+          console.log("--------fail--------");
+        }
+      })
+    }
+  },
+  /* 点击加号 */
+  bindPlus: function (e) {
+    var that = this;
+    console.log(e.currentTarget.dataset);
+    wx.request({
+      url: 'https://www.zhuyao.xin/shop/shopcarAddOrDel',
+      data: {
+        openid: app.globalData.openid,
+        goodsId: e.currentTarget.dataset.goodsid,
+        goodsNum: e.currentTarget.dataset.goodsnum + 1
+      },
+      success: function (res) {
+        //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
+        console.log(res.data);
+        that.setData({
+          goodsList: res.data.data.goodsList,
+          goodsNumber: res.data.data.goodsNumber,
+          sumPrice: res.data.data.sumPrice
+        })
+        console.log(res.data.data);
+      },
+      fail: function (res) {
+        console.log("--------fail--------");
+      }
+    })
   }
 })

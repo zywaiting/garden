@@ -13,6 +13,7 @@
     "pages/info/orderList/orderList",
     "pages/info/orderTicketList/orderTicketList",
     "pages/info/orderTrace/orderTrace",
+    "pages/info/orderConfirm/orderConfirm",
     "pages/attach/love/love"
   ],
   "window":{
