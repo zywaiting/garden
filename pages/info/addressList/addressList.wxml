@@ -4,7 +4,7 @@
         <view class="m-shipAddress ma-layort">
             <view class="u-icon u-address-bg">
             </view>
-            <block wx:for="{{userAddressesIsDefault}}">
+            <!-- <block wx:for="{{userAddressesIsDefault}}">
               <view class="item">
                   <view class="left">
                       <view class="uname">
@@ -21,24 +21,51 @@
                       </view>
                   </view>   
               </view>
-            </block>
-            <block wx:for="{{userAddressesNoDefault}}">
-              <view class="item">
-                  <view class="left">
-                      <view class="uname">
-                          {{item.name}}
+            </block> -->
+
+            <view wx:if="{{showView}}">
+              <block wx:for="{{userAddressesNoDefault}}">
+                  <view class="item">
+                    <navigator url='../orderConfirm/orderConfirm?addressId={{item.id}}&orderNumber={{orderNumber}}'>
+                      <view class="left">
+                          <view class="uname">
+                              {{item.name}}
+                          </view>
                       </view>
+                      <view class="middle">
+                          <view class="phone">
+                              {{item.phone}}
+                          </view>
+                          <view class="addr">
+                              {{item.address}}
+                          </view>
+                      </view>
+                    </navigator>
                   </view>
-                  <view class="middle">
-                      <view class="phone">
-                          {{item.phone}}
-                      </view>
-                      <view class="addr">
-                          {{item.address}}
-                      </view>
-                  </view>
-              </view>
-            </block>
+              </block>
+            </view>
+
+            <view wx:else>
+              <block wx:for="{{userAddressesNoDefault}}">
+                <view class="item">
+                    <view class="left">
+                        <view class="uname">
+                            {{item.name}}
+                        </view>
+                    </view>
+                    <view class="middle">
+                        <view class="phone">
+                            {{item.phone}}
+                        </view>
+                        <view class="addr">
+                            {{item.address}}
+                        </view>
+                    </view>
+                </view>
+              </block>
+            </view>
+
+
         </view>
         <navigator url="../addAddress/addAddress" redirect="true">
           <button class="w-button">＋ 新建地址</button>

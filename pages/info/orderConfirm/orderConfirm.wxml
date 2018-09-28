@@ -16,28 +16,34 @@
     <view class="m-shipAddress ma-layort">
         <view class="u-icon u-address-bg">
         </view>
-        <view class="item">
-            <view class="item">
-                  <view class="left">
-                      <view class="uname">
-                          朱瑶
-                      </view>
+
+        <!-- <view class="item">
+          <view class="item">
+              <view class="left">
+                  <view class="uname">
+                      朱瑶
                   </view>
-                  <view class="middle">
-                      <view class="phone">
-                          17605674666
-                      </view>
-                      <view class="addr">
-                          安徽
-                      </view>
-                  </view>   
               </view>
-            <!-- <view class="middle">
+              <view class="middle">
+                  <view class="phone">
+                      17605674666
+                  </view>
+                  <view class="addr">
+                      安徽
+                  </view>
+              </view>   
+          </view>
+        </view> -->
+
+        <navigator url= "../addressList/addressList?orderNumber={{orderNumber}}">
+          <view class="item">
+              <view class="middle">
                 <view class="addr">
                      选择收货地址
                 </view>
-            </view> -->
-        </view>
+              </view> 
+          </view>
+        </navigator>
     </view>
 
     <view class="Payway ma-layort">
@@ -92,21 +98,21 @@
     <view class="ma-plist ma-layort">
         <view class="hd">我的商品</view>
         <view class="m-cartGroup">
-          <block wx:for="{{goodsList}}">
+          <block wx:for="{{orderGoodsList}}">
             <ul class="list">
                 <li class="item">
                     <view class="inner">
                         <view class="m-good">
                             <view class="imgWrap">
-                                <image src="{{item.img}}" alt=""></image>
+                                <image src="{{item.goods.img}}" alt=""></image>
                             </view>
                             <view class="cnt">
                                 <view class="xbox">
-                                    <text class="line1">{{item.name}}</text>
-                                    <text class="count">{{item.num}}</text>
+                                    <text class="line1">{{item.goods.name}}</text>
+                                    <text class="count">{{item.goods.num}}</text>
                                 </view>
-                                <text class="line2">{{item.unit}}</text>
-                                <text class="line3">￥{{item.shopPrice}}.00</text>
+                                <text class="line2">{{item.goods.unit}}</text>
+                                <text class="line3">￥{{item.goods.shopPrice}}.00</text>
                             </view>
                         </view>
                     </view>
@@ -131,7 +137,7 @@
         <ul class="m-list m-summary">
             <li class="item">
                 <view class="left">商品合计</view>
-                <view class="right">￥{{sumPrice}}.00</view>
+                <view class="right">￥{{payPrice}}.00</view>
             </li>
             <!-- <li class="item">
                 <view class="left">优惠金额</view>
@@ -152,7 +158,7 @@
         <view class="empty-block"></view>
         <view class="main">
             <view class="left">
-                <text class="actualPrice">应付:￥{{sumPrice}}.00 </text>
+                <text class="actualPrice">应付:￥{{payPrice}}.00 </text>
             </view>
             <view class="right">
                 <view class="btn w-button">去付款</view>

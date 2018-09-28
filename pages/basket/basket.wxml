@@ -50,7 +50,9 @@
 
             </view>
         </view>
-        <view class="m-cartFT">
+
+        <view wx:if="{{showView}}">
+          <view class="m-cartFT">
             <view class="left">
                 <view class="checkAll">
                     <text class="txt">已选 ({{goodsNumber}})</text>
@@ -60,8 +62,15 @@
                 </view>
             </view>
             <view class="right">
-                <navigator url="../info/orderConfirm/orderConfirm" hover-class="navigator-hover"><view class="btn w-button">下单</view></navigator>
+                <!-- <navigator url="../info/orderConfirm/orderConfirm?orderNumber={{orderNumber}}" hover-class="navigator-hover"> -->
+                  <view class="btn w-button" bindtap='createOrder'>下单</view>
+                <!-- </navigator> -->
             </view>
+          </view>
         </view>
+        <view wx:else>
+          <text>您还没有购物，快去购物吧！</text>
+        </view>
+        
     </view>
 </view>

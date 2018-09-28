@@ -8,15 +8,23 @@ Page({
    */
   data: {
     userAddressesIsDefault:[],
-    userAddressesNoDefault:[]
+    userAddressesNoDefault:[],
+    showView:false,
+    orderNumber:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
     console.log(options);
+    var that = this;
+    if (options.orderNumber != undefined){
+      that.setData({
+        showView: true,
+        orderNumber: options.orderNumber
+      })
+    }
     wx.request({
       url: 'https://www.zhuyao.xin/address',
       data: {
@@ -28,7 +36,6 @@ Page({
           userAddressesIsDefault: res.data.data.userAddressesIsDefault,
           userAddressesNoDefault: res.data.data.userAddressesNoDefault,
         })
-        console.log(res.data);
       },
       fail: function (res) {
         console.log("--------fail--------");

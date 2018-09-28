@@ -9,7 +9,10 @@ Page({
   data: {
     goodsList:[],
     goodsNumber:'',
-    sumPrice:''
+    sumPrice:'',
+    map:'',
+    orderNumber:'',
+    showView:false
   },
 
   /**
@@ -39,11 +42,23 @@ Page({
       success: function (res) {
         //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
         console.log(res.data);
-        that.setData({
-          goodsList: res.data.data.goodsList,
-          goodsNumber: res.data.data.goodsNumber,
-          sumPrice: res.data.data.sumPrice
-        })
+        if (res.data.data.sumPrice > 0){
+          that.setData({
+            map: res.data.data,
+            goodsList: res.data.data.goodsList,
+            goodsNumber: res.data.data.goodsNumber,
+            sumPrice: res.data.data.sumPrice,
+            showView:true
+          })
+        }else {
+          that.setData({
+            map: res.data.data,
+            goodsList: res.data.data.goodsList,
+            goodsNumber: res.data.data.goodsNumber,
+            sumPrice: res.data.data.sumPrice
+          })
+        }
+        
         console.log(res.data.data);
       },
       fail: function (res) {
@@ -103,6 +118,7 @@ Page({
           //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
           console.log(res.data);
           that.setData({
+            map: res.data.data,
             goodsList: res.data.data.goodsList,
             goodsNumber: res.data.data.goodsNumber,
             sumPrice: res.data.data.sumPrice
@@ -130,6 +146,7 @@ Page({
         //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
         console.log(res.data);
         that.setData({
+          map: res.data.data,
           goodsList: res.data.data.goodsList,
           goodsNumber: res.data.data.goodsNumber,
           sumPrice: res.data.data.sumPrice
@@ -139,6 +156,35 @@ Page({
       fail: function (res) {
         console.log("--------fail--------");
       }
+    })
+  },
+  createOrder:function() {
+    var that = this;
+    console.log(that.data.map);
+    wx.request({
+      url: 'https://www.zhuyao.xin/shop/createOrder',
+      data: {
+        openid: app.globalData.openid,
+        createOrderJson: that.data.map
+      },
+      success: function (res) {
+        //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
+        console.log(res.data.data);
+        that.setData({
+          orderNumber:res.data.data
+        })
+        that.travel();
+      },
+      fail: function (res) {
+        console.log("--------fail--------");
+      }
+    })
+  },
+  travel: function () {
+    var that = this;
+    wx.navigateTo({
+      //跳转至指定页面并关闭其他打开的所有页面（这个最好用在返回至首页的的时候）
+      url: '../info/orderConfirm/orderConfirm?orderNumber=' + that.data.orderNumber
     })
   }
 })

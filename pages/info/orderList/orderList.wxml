@@ -45,7 +45,9 @@
 
             <view class="ft">
                 <view class="btns" wx:if="{{!pay}}">
+                  <navigator url="../orderConfirm/orderConfirm?orderNumber={{item.orderNumber}}">
                     <text class="w-button btn-topay">去付款</text>
+                  </navigator> 
                 </view>
 
                 <view class="btns" class="btns" wx:if="{{pay&&!ship}}">

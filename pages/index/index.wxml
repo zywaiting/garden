@@ -1,6 +1,3 @@
 <!--index.wxml-->
-<view class="page-body">
-  <view class="page-section page-section-gap">
-    <web-view src="https://h5.wodiapp.com"></web-view>
-  </view>
-</view>
+<!--size属性为default-->
+<button type="primary" size="default" bindtap="movingcar"> 购买罐头 </button>

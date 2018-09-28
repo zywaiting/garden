@@ -1,4 +1,4 @@
-// pages/info/orderConfirm/orderConfirm.js
+// pages/info/productDetail/productDetail.js
 //获取应用实例
 const app = getApp()
 Page({
@@ -7,9 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderGoodsList: [],
-    payPrice: '',
-    orderNumber:''
+    goodsItem:''
   },
 
   /**
@@ -17,31 +15,22 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    console.log(options);
-    that.setData({
-      orderNumber: options.orderNumber
-    })
     wx.request({
-      url: 'https://www.zhuyao.xin/shop/orderItem',
+      url: 'https://www.zhuyao.xin/shop/goodsItem',
       data: {
-        orderNumber: options.orderNumber
+        id: 1,
       },
       success: function (res) {
         //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
         console.log(res.data.data);
         that.setData({
-          orderGoodsList: res.data.data.orderGoodsList,
-          payPrice: res.data.data.payPrice,
+          goodsItem: res.data.data
         })
       },
       fail: function (res) {
         console.log("--------fail--------");
       }
     })
-
-    if (options.addressId!=undefined){
-      console.log("--------fail--------");
-    }
   },
 
   /**
@@ -55,7 +44,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**
@@ -91,5 +80,32 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  goodsShopcar:function (e) {
+    console.log(e.currentTarget.dataset.goodsid);
+    this.addGoodsShopcar(e);
+    wx.switchTab({
+      //跳转至指定页面并关闭其他打开的所有页面（这个最好用在返回至首页的的时候）
+      url: '/pages/basket/basket'
+    })
+  },
+  addGoodsShopcar: function (e) {
+    var that = this;
+    console.log(e.currentTarget.dataset.goodsid);
+    wx.request({
+      url: 'https://www.zhuyao.xin/shop/addGoodsToShopcar',
+      data: {
+        goodsId: e.currentTarget.dataset.goodsid,
+        openid: app.globalData.openid
+      },
+      success: function (res) {
+        //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
+        console.log(res.data);
+        
+      },
+      fail: function (res) {
+        console.log("--------fail--------");
+      }
+    })
   }
 })
