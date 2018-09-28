@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    result:''
+    result:'',
+    urls:[]
   },
 
   /**
@@ -26,8 +27,11 @@ Page({
       success: function (res) {
         console.log(res.data);
         //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
+        var imgsList = [];
+        imgsList.push(res.data.data.imgUrl);
         that.setData({
-          result: res.data.data
+          result: res.data.data,
+          urls: imgsList
         })
       },
       fail: function (res) {
@@ -83,5 +87,14 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  previewImage: function (e) {
+    console.log(e);
+    var current = e.target.dataset.imgUrl;
+    console.log(this.data.urls);
+    wx.previewImage({
+      current: current,
+      urls:this.data.urls
+    })  
   }
 })
