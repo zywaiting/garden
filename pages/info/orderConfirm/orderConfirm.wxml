@@ -16,34 +16,36 @@
     <view class="m-shipAddress ma-layort">
         <view class="u-icon u-address-bg">
         </view>
-
-        <!-- <view class="item">
-          <view class="item">
-              <view class="left">
-                  <view class="uname">
-                      朱瑶
+        <!-- <navigator url= "../addressList/addressList?orderNumber={{orderNumber}}"> -->
+          <view bindtap='addressList' data-orderNumber='{{orderNumber}}'>
+              <view class="item" wx:if="{{showView}}">
+                  <view class="left">
+                      <view class="uname">
+                          {{address.name}}
+                      </view>
                   </view>
+                  <view class="middle">
+                      <view class="phone">
+                          {{address.phone}}
+                      </view>
+                      <view class="addr">
+                          {{address.address}}
+                      </view>
+                  </view>   
               </view>
-              <view class="middle">
-                  <view class="phone">
-                      17605674666
-                  </view>
-                  <view class="addr">
-                      安徽
-                  </view>
-              </view>   
-          </view>
-        </view> -->
 
-        <navigator url= "../addressList/addressList?orderNumber={{orderNumber}}">
-          <view class="item">
-              <view class="middle">
-                <view class="addr">
-                     选择收货地址
-                </view>
-              </view> 
+              <view class="item" wx:else>
+                <view class="middle">
+                  <view class="addr">
+                      选择收货地址
+                  </view>
+                </view> 
+              </view>
           </view>
-        </navigator>
+        <!-- </navigator> -->
+        
+          
+        
     </view>
 
     <view class="Payway ma-layort">
@@ -156,13 +158,15 @@
 
     <view class="ocViewFt">
         <view class="empty-block"></view>
-        <view class="main">
+        <view class="main" wx:if="{{showView}}">
             <view class="left">
                 <text class="actualPrice">应付:￥{{payPrice}}.00 </text>
             </view>
-            <view class="right">
-                <view class="btn w-button">去付款</view>
-            </view>
+            <navigator url= "../orderPay/orderPay?orderNumber={{orderNumber}}&payPrice={{payPrice}}">
+              <view class="right">
+                  <view class="btn w-button">去付款</view>
+              </view>
+            </navigator>
         </view>
     </view>
 </view>

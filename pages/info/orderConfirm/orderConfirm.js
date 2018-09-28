@@ -9,7 +9,9 @@ Page({
   data: {
     orderGoodsList: [],
     payPrice: '',
-    orderNumber:''
+    orderNumber:'',
+    address:'',
+    showView: false
   },
 
   /**
@@ -32,6 +34,7 @@ Page({
         that.setData({
           orderGoodsList: res.data.data.orderGoodsList,
           payPrice: res.data.data.payPrice,
+          showView: false
         })
       },
       fail: function (res) {
@@ -40,7 +43,24 @@ Page({
     })
 
     if (options.addressId!=undefined){
-      console.log("--------fail--------");
+      wx.request({
+        url: 'https://www.zhuyao.xin/orderAddAddress',
+        data: {
+          orderNumber: options.orderNumber,
+          id: options.addressId
+        },
+        success: function (res) {
+          //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
+          console.log(res.data);
+          that.setData({
+            address:res.data.data,
+            showView:true
+          })
+        },
+        fail: function (res) {
+          console.log("--------fail--------");
+        }
+      })
     }
   },
 
@@ -91,5 +111,11 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  addressList: function (e) {
+    console.log(e.currentTarget.dataset);
+    wx.redirectTo({
+      url: '../addressList/addressList?orderNumber=' + e.currentTarget.dataset.ordernumber
+    })
   }
 })

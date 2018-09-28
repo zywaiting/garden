@@ -1,4 +1,4 @@
-// pages/info/addressList/addressList.js
+// pages/info/orderPay/orderPay.js
 //获取应用实例
 const app = getApp()
 Page({
@@ -7,34 +7,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userAddressesIsDefault:[],
-    userAddressesNoDefault:[],
-    showView:false,
-    orderNumber:''
+    result:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
     var that = this;
-    if (options.orderNumber != undefined){
-      that.setData({
-        showView: true,
-        orderNumber: options.orderNumber
-      })
-    }
+    
     wx.request({
-      url: 'https://www.zhuyao.xin/address',
+      url: 'https://www.zhuyao.xin/shop/orderPay',
       data: {
-        openid: app.globalData.openid,
+        orderNumber: options.orderNumber,
+        payPrice: options.payPrice,
+        channel:'微信'
       },
       success: function (res) {
+        console.log(res.data);
         //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
         that.setData({
-          userAddressesIsDefault: res.data.data.userAddressesIsDefault,
-          userAddressesNoDefault: res.data.data.userAddressesNoDefault,
+          result: res.data.data
         })
       },
       fail: function (res) {
@@ -90,11 +83,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  orderConfirm: function (e) {
-    console.log(e.currentTarget.dataset);
-    wx.redirectTo({
-      url: '../orderConfirm/orderConfirm?addressId=' + e.currentTarget.dataset.addressid + '&orderNumber=' + e.currentTarget.dataset.ordernumber
-    })
   }
 })

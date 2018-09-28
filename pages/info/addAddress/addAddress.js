@@ -7,14 +7,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    orderNumber:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    console.log(options);
+    that.setData({
+      orderNumber: options.orderNumber
+    })
   },
 
   /**
@@ -84,7 +88,6 @@ Page({
         },
         success: function (res) {
           //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
-          console.log(res.data);
         },
         fail: function (res) {
           console.log("--------fail--------");

@@ -2,8 +2,7 @@
 <view class="container greybg">
     <view class="orderReceiveList">
         <view class="m-shipAddress ma-layort">
-            <view class="u-icon u-address-bg">
-            </view>
+            
             <!-- <block wx:for="{{userAddressesIsDefault}}">
               <view class="item">
                   <view class="left">
@@ -25,28 +24,30 @@
 
             <view wx:if="{{showView}}">
               <block wx:for="{{userAddressesNoDefault}}">
+                <view class="u-icon u-address-bg"></view>
+                <view bindtap='orderConfirm' data-addressId='{{item.id}}' data-orderNumber='{{orderNumber}}'>
                   <view class="item">
-                    <navigator url='../orderConfirm/orderConfirm?addressId={{item.id}}&orderNumber={{orderNumber}}'>
-                      <view class="left">
-                          <view class="uname">
-                              {{item.name}}
-                          </view>
-                      </view>
-                      <view class="middle">
-                          <view class="phone">
-                              {{item.phone}}
-                          </view>
-                          <view class="addr">
-                              {{item.address}}
-                          </view>
-                      </view>
-                    </navigator>
+                        <view class="left">
+                            <view class="uname">
+                                {{item.name}}
+                            </view>
+                        </view>
+                        <view class="middle">
+                            <view class="phone">
+                                {{item.phone}}
+                            </view>
+                            <view class="addr">
+                                {{item.address}}
+                            </view>
+                        </view>
+                    </view>
                   </view>
               </block>
             </view>
 
             <view wx:else>
               <block wx:for="{{userAddressesNoDefault}}">
+                <view class="u-icon u-address-bg"></view>
                 <view class="item">
                     <view class="left">
                         <view class="uname">
@@ -67,7 +68,7 @@
 
 
         </view>
-        <navigator url="../addAddress/addAddress" redirect="true">
+        <navigator url="../addAddress/addAddress?orderNumber={{orderNumber}}" redirect="true">
           <button class="w-button">＋ 新建地址</button>
         </navigator>
     </view>

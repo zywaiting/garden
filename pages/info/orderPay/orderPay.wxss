@@ -1,0 +1,12 @@
+/* pages/info/orderPay/orderPay.wxss */
+.payView{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.payImg{
+  height: 750rpx;
+  width: 600rpx
+}

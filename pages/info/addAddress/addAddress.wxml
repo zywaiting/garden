@@ -32,7 +32,7 @@
             <i class="icon icon-nochecked-g ion-ios-circle-outline"></i>
             <span class="txt">设为默认地址</span>
         </view> -->
-        <navigator url="../addressList/addressList" redirect="true">
+        <navigator url="../addressList/addressList?orderNumber={{orderNumber}}" redirect="true">
           <view class="orderRFT">
               <button class="left">取消</button>
               <button class="right" form-type='submit'>保存</button>
